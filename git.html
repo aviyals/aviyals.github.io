@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git Basics | Docuhub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="brand">Docuhub</a>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html#overview">Overview</a>
+          <a href="index.html#backend-topics">Backend</a>
+          <a href="index.html#devops-topics" class="active">DevOps</a>
+          <a href="index.html#functional-topics">Functional</a>
+        </nav>
+        <a href="index.html#devops-topics" class="header-link">Back to topics</a>
+      </div>
+    </header>
+
+    <nav class="breadcrumb container" aria-label="Breadcrumb">
+      <a href="index.html#overview">Home</a><span>/</span><a href="index.html#devops-topics">DevOps</a><span>/</span><span aria-current="page">Git</span>
+    </nav>
+
+    <main class="git-page">
+      <section class="hero">
+        <div class="container hero-copy">
+          <span class="eyebrow">DevOps / Git</span>
+          <h1>Git basics for everyday development.</h1>
+          <p>Learn the core ideas, practice the commands you will use most, and collect real problems with solutions for the community.</p>
+        </div>
+      </section>
+
+      <section class="git-hub" aria-label="Git topics">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Explore Git</span>
+            <h2>Choose a topic</h2>
+            <p>Start with the area that matches what you need to do.</p>
+          </div>
+          <div class="git-topic-cards">
+            <a class="git-topic-card" href="git-tutorials.html"><span class="topic-card-number">01</span><strong>Tutorials</strong><small>Learn Git step by step from your first repository.</small></a>
+            <a class="git-topic-card" href="git-commands.html"><span class="topic-card-number">02</span><strong>Basic commands</strong><small>Find the everyday commands for inspecting and sharing work.</small></a>
+            <a class="git-topic-card" href="git-branching.html"><span class="topic-card-number">03</span><strong>Branching strategy</strong><small>Choose a practical way to organize features, fixes, and releases.</small></a>
+            <a class="git-topic-card" href="git-challenges.html"><span class="topic-card-number">04</span><strong>Challenges</strong><small>Explore real Git problems and the solutions that worked.</small></a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
