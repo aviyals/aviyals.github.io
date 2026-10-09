@@ -1,1924 +1,462 @@
-:root {
-  --bg: #f5f7fb;
-  --bg-soft: #f9fafb;
-  --panel: #ffffff;
-  --panel-alt: #f8fafc;
-  --line: #e7ebf1;
-  --line-strong: #dfe7f1;
-  --text: #111827;
-  --muted: #5b6474;
-  --muted-strong: #374151;
-  --primary: #4f46e5;
-  --primary-soft: #eef2ff;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
-  --radius: 20px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(180deg, #eaf4ff 0%, #f5faff 42%, #dceeff 100%);
-  color: var(--text);
-  line-height: 1.6;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-.container {
-  width: min(860px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(231, 235, 241, 0.9);
-}
-
-.header-inner {
-  height: 78px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-}
-
-.brand {
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.main-nav a {
-  padding: 10px 14px;
-  border-radius: 10px;
-  color: var(--muted-strong);
-  font-size: 0.88rem;
-  font-weight: 600;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.main-nav a:hover,
-.main-nav a:focus-visible {
-  background: #f3f4f6;
-  color: var(--text);
-}
-
-.header-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  padding: 10px 16px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.7);
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding-top: 16px;
-  color: var(--muted);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.breadcrumb a:hover,
-.breadcrumb a:focus-visible {
-  color: var(--primary);
-}
-
-.breadcrumb span:last-child {
-  color: var(--text);
-}
-
-.hero {
-  padding: 88px 0 45px;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.hero-copy h1 {
-  margin: 18px 0 16px;
-  font-size: clamp(2.8rem, 4vw, 4.4rem);
-  line-height: 0.98;
-  letter-spacing: -0.06em;
-}
-
-.hero-copy p {
-  margin: 0;
-  max-width: 560px;
-  color: var(--muted);
-  font-size: 1.08rem;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 28px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 22px;
-  border-radius: 12px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-  box-shadow: 0 12px 18px rgba(79, 70, 229, 0.16);
-}
-
-.btn-secondary {
-  background: var(--panel);
-  color: var(--text);
-  border: 1px solid var(--line);
-}
-
-.stats {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  padding: 0;
-  margin: 36px 0 0;
-}
-
-.stats li {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stats strong {
-  font-size: 1.55rem;
-  letter-spacing: -0.04em;
-}
-
-.stats span {
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-
-.hero-panel {
-  display: flex;
-  justify-content: center;
-}
-
-.window-shell {
-  width: min(100%, 500px);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.window-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 46px;
-  padding: 0 16px;
-  background: #f7f9fb;
-  border-bottom: 1px solid var(--line);
-}
-
-.window-bar span {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.window-bar span:nth-child(1) { background: #fbbf24; }
-.window-bar span:nth-child(2) { background: #34d399; }
-.window-bar span:nth-child(3) { background: #f87171; }
-
-.code-block {
-  padding: 22px 20px 24px;
-  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  font-size: 0.88rem;
-  color: #1f2937;
-}
-
-.code-line {
-  margin: 0 0 10px;
-  color: #334155;
-  letter-spacing: -0.02em;
-}
-
-.code-line.comment {
-  color: #64748b;
-}
-
-.token-key {
-  color: #4f46e5;
-}
-
-.token-keyword {
-  color: #0f766e;
-}
-
-.docs-section,
-.feature-section {
-  padding: 28px 0 64px;
-}
-
-.section-heading {
-  margin-bottom: 28px;
-}
-
-.section-heading h2,
-.feature-copy h2 {
-  margin: 14px 0 0;
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  letter-spacing: -0.05em;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 22px;
-}
-
-.doc-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 22px 20px 18px;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.02);
-}
-
-.card-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 26px;
-  padding: 4px 9px;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 700;
-}
-
-.chip-backend {
-  background: #eef2ff;
-  color: #4338ca;
-}
-
-.doc-card h3 {
-  margin: 22px 0 8px;
-  font-size: 1.16rem;
-  letter-spacing: -0.03em;
-}
-
-.doc-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.reference-links {
-  max-width: 640px;
-  margin-inline: auto;
-}
-
-.reference-links h3 {
-  margin-top: 20px;
-  margin-bottom: 14px;
-}
-
-.reference-links p + p {
-  margin-top: 10px;
-}
-
-.reference-links p a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: 54px;
-  padding: 12px 15px;
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--primary);
-  border-radius: 8px;
-  background: var(--panel-alt);
-  color: var(--muted-strong);
-  font-weight: 600;
-  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, transform 0.18s ease;
-}
-
-.reference-links p a::after {
-  content: "↗";
-  flex: 0 0 auto;
-  color: var(--primary);
-  font-size: 1.1rem;
-}
-
-.reference-links p a:hover,
-.reference-links p a:focus-visible {
-  border-color: var(--primary);
-  background: var(--primary-soft);
-  color: var(--primary);
-  transform: translateX(2px);
-}
-
-.reference-links p a:focus-visible {
-  outline: 3px solid rgba(79, 70, 229, 0.25);
-  outline-offset: 3px;
-}
-
-.feature-section {
-  padding-top: 8px;
-}
-
-.feature-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
-  gap: 28px;
-  align-items: start;
-}
-
-.feature-copy p {
-  max-width: 640px;
-  color: var(--muted);
-}
-
-.topic-panel {
-  padding: 22px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
-}
-
-.topic-panel h3 {
-  margin: 0 0 14px;
-  font-size: 1.25rem;
-  letter-spacing: -0.04em;
-}
-
-.topic-panel ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 10px;
-}
-
-.topic-panel li {
-  padding: 11px 12px;
-  border-radius: 10px;
-  background: var(--panel-alt);
-  color: var(--muted-strong);
-  font-size: 0.92rem;
-  font-weight: 600;
-}
-
-.topics-section {
-  padding: 88px 0 72px;
-}
-
-.section-heading p {
-  max-width: 620px;
-  margin: 14px 0 0;
-  color: var(--muted);
-}
-
-.topic-list {
-  display: grid;
-  gap: 12px;
-}
-
-.topic-item {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 16px;
-  align-items: start;
-  padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.86);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.topic-item:hover,
-.topic-item:focus-visible {
-  border-color: #c7d2fe;
-  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.08);
-  transform: translateY(-1px);
-}
-
-.topic-number {
-  color: var(--primary);
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding-top: 3px;
-}
-
-.topic-item strong,
-.topic-item small {
-  display: block;
-}
-
-.interview-section {
-  margin-top: 72px;
-  padding-top: 42px;
-  border-top: 1px solid var(--line);
-}
-
-.question-list {
-  display: grid;
-  gap: 10px;
-}
-
-.question-item {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.86);
-  overflow: hidden;
-}
-
-.question-item summary {
-  cursor: pointer;
-  padding: 18px 20px;
-  color: var(--text);
-  font-size: 0.98rem;
-  font-weight: 700;
-  list-style-position: inside;
-}
-
-.question-item summary::marker {
-  color: var(--primary);
-}
-
-.question-item p {
-  margin: 0;
-  padding: 0 20px 20px 40px;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.question-item code {
-  padding: 2px 5px;
-  border-radius: 5px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 0.86em;
-}
-
-.topic-item strong {
-  margin-bottom: 5px;
-  font-size: 1rem;
-}
-
-.topic-item small {
-  color: var(--muted);
-  font-size: 0.88rem;
-}
-
-.git-page {
-  padding-bottom: 80px;
-}
-
-.git-hub {
-  padding: 28px 0 18px;
-}
-
-.git-topic-cards {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.git-topic-card {
-  display: flex;
-  min-height: 170px;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.git-topic-card:hover,
-.git-topic-card:focus-visible {
-  border-color: #a5b4fc;
-  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.1);
-  transform: translateY(-2px);
-}
-
-.topic-card-number {
-  color: var(--primary);
-  font-size: 0.76rem;
-  font-weight: 700;
-}
-
-.git-topic-card strong {
-  display: block;
-  margin-top: 20px;
-  font-size: 1.05rem;
-}
-
-.git-topic-card small {
-  color: var(--muted);
-  font-size: 0.84rem;
-}
-
-.git-section {
-  padding: 28px 0 0;
-  scroll-margin-top: 102px;
-}
-
-.git-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 34px;
-  align-items: start;
-}
-
-.git-main .container {
-  width: auto;
-}
-
-.git-toc {
-  position: sticky;
-  top: 102px;
-  margin-top: 32px;
-  padding: 18px;
-  border-left: 1px solid var(--line-strong);
-}
-
-.git-toc nav {
-  display: grid;
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.git-toc a {
-  color: var(--muted);
-  font-size: 0.86rem;
-  font-weight: 600;
-}
-
-.git-toc a:hover,
-.git-toc a:focus-visible {
-  color: var(--primary);
-}
-
-.git-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.git-card,
-.submission-card {
-  padding: 22px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
-}
-
-.git-card h3,
-.submission-card h2 {
-  margin: 0 0 8px;
-  letter-spacing: -0.03em;
-}
-
-.git-card p,
-.submission-card p {
-  margin: 0;
-  color: var(--muted);
-}
-
-.git-card code,
-.git-command {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-}
-
-.git-command {
-  display: block;
-  margin: 0;
-  padding: 12px 14px;
-  overflow-x: auto;
-  border-radius: 10px 10px 0 0;
-  background: #292c34;
-  color: #d9dee9;
-  font-size: 0.84rem;
-}
-
-.code-snippet {
-  position: relative;
-  margin-top: 16px;
-  overflow: hidden;
-  border: 1px solid #353943;
-  border-radius: 10px;
-  background: #292c34;
-  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
-}
-
-.code-header {
-  padding: 12px 20px;
-  background: #292c34;
-  color: #eef1f7;
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
-.code-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 62px;
-  padding: 10px 18px 10px 20px;
-  border-top: 1px solid #393d47;
-  background: #292c34;
-  color: #e7eaf0;
-  font-size: 0.84rem;
-}
-
-.copy-button {
-  position: relative;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #d8dee9;
-  cursor: pointer;
-  font: 600 0.78rem/1.2 "Inter", sans-serif;
-  font-size: 0;
-  text-align: center;
-  transition: background 0.2s ease;
-}
-
-.copy-button::before,
-.copy-button::after {
-  position: absolute;
-  display: block;
-  width: 11px;
-  height: 13px;
-  border: 2px solid currentColor;
-  border-radius: 2px;
-  content: "";
-}
-
-.copy-button::before {
-  transform: translate(5px, 2px);
-}
-
-.copy-button::after {
-  transform: translate(1px, -2px);
-  background: #292c34;
-}
-
-.copy-button:hover,
-.copy-button:focus-visible {
-  color: #ffffff;
-}
-
-.code-snippet > .copy-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 2;
-  display: block;
-  width: auto;
-  min-width: 52px;
-  height: 30px;
-  padding: 0 10px;
-  border: 1px solid #f2b84b;
-  border-radius: 6px;
-  background: #f2b84b;
-  color: #242832;
-  font: 600 0.78rem/1.2 "Inter", sans-serif;
-  font-size: 0.78rem;
-  text-align: center;
-}
-
-.code-snippet > .copy-button::before,
-.code-snippet > .copy-button::after {
-  display: none;
-}
-
-.code-snippet > .copy-button:hover,
-.code-snippet > .copy-button:focus-visible {
-  background: #ffd166;
-  color: #161a21;
-}
-
-.code-snippet > .git-command,
-.code-snippet > pre {
-  padding: 18px 88px 18px 16px;
-  border-radius: 10px;
-}
-
-.code-snippet > .git-command,
-.code-snippet > pre,
-.code-snippet > .git-command *,
-.code-snippet > pre * {
-  color: #d9dee9;
-}
-
-.code-snippet .syntax-command,
-.code-snippet .syntax-keyword {
-  color: #f4a261;
-}
-
-.code-snippet .syntax-string,
-.code-snippet .syntax-tag {
-  color: #8ed081;
-}
-
-.code-snippet .syntax-comment {
-  color: #8993a4;
-}
-
-.code-snippet .syntax-literal {
-  color: #c792ea;
-}
-
-.git-command {
-  padding: 18px 88px 18px 16px;
-  border-radius: 10px;
-}
-
-.git-issue pre {
-  padding: 18px 88px 18px 16px;
-  border-radius: 10px;
-}
-
-.copy-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 1;
-  width: auto;
-  min-width: 52px;
-  height: 30px;
-  padding: 0 10px;
-  border: 1px solid #555b68;
-  border-radius: 6px;
-  background: #343842;
-  color: #e7eaf0;
-  font-size: 0.78rem;
-  text-align: center;
-}
-
-.copy-button::before,
-.copy-button::after {
-  display: none;
-}
-
-.copy-button:hover,
-.copy-button:focus-visible {
-  background: #454b58;
-  color: #ffffff;
-}
-
-.code-header {
-  letter-spacing: 0.04em;
-  text-transform: lowercase;
-}
-
-.copy-button {
-  width: auto;
-  min-width: 52px;
-  height: 32px;
-  padding: 0 10px;
-  border: 1px solid #555b68;
-  border-radius: 6px;
-  background: #343842;
-  color: #e7eaf0;
-  font-size: 0.76rem;
-  text-align: center;
-}
-
-.copy-button::before,
-.copy-button::after {
-  display: none;
-}
-
-.copy-button:hover,
-.copy-button:focus-visible {
-  background: #454b58;
-}
-
-.copy-button {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  height: auto;
-  padding: 10px 14px;
-  border: 0;
-  border-top: 1px solid #4a4f5b;
-  border-radius: 0;
-  background: #343842;
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-align: right;
-}
-
-.syntax-command,
-.syntax-keyword {
-  color: #f4a261;
-}
-
-.syntax-string,
-.syntax-tag {
-  color: #8ed081;
-}
-
-.syntax-comment {
-  color: #8993a4;
-  font-style: italic;
-}
-
-.syntax-literal {
-  color: #c792ea;
-}
-
-.submission-card {
-  margin-top: 28px;
-}
-
-.submission-form {
-  display: grid;
-  gap: 14px;
-  margin-top: 20px;
-}
-
-.submission-form label {
-  display: grid;
-  gap: 6px;
-  color: var(--muted-strong);
-  font-size: 0.88rem;
-  font-weight: 600;
-}
-
-.submission-form input,
-.submission-form textarea {
-  width: 100%;
-  padding: 11px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: 10px;
-  color: var(--text);
-  font: inherit;
-  background: var(--panel);
-}
-
-.submission-form textarea {
-  min-height: 110px;
-  resize: vertical;
-}
-
-.submission-note {
-  margin-top: 12px !important;
-  font-size: 0.82rem;
-}
-
-.git-issue {
-  margin-top: 34px;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-.git-issue h3 {
-  margin: 12px 0 10px;
-  font-size: 1.35rem;
-  letter-spacing: -0.03em;
-}
-
-.git-issue p {
-  margin: 0 0 16px;
-}
-
-.git-issue .issue-intro {
-  margin-bottom: 22px;
-}
-
-.issue-label {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--text);
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
-.git-issue pre {
-  margin: 0;
-  padding: 16px;
-  overflow-x: auto;
-  border-radius: 0;
-  background: #292c34;
-  color: #d9dee9;
-  font: 0.82rem/1.6 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-}
-
-.git-issue a {
-  color: var(--primary);
-  font-weight: 600;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-@media (max-width: 900px) {
-  .hero-grid,
-  .feature-layout,
-  .card-grid,
-  .git-grid,
-  .git-layout,
-  .git-topic-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .git-toc {
-    position: static;
-    grid-row: 1;
-    margin-top: 28px;
-    border-top: 1px solid var(--line-strong);
-    border-left: 0;
-  }
-
-  .git-toc nav {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .header-inner {
-    gap: 14px;
-  }
-
-  .main-nav {
-    gap: 6px;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Docuhub | Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <site-header></site-header>
+    <!-- <header class="site-header">
+      <div class="container header-inner">
+        <a href="#" class="brand">Docuhub</a>
+
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="#overview" data-view="overview">Overview</a>
+          <a href="#backend-topics" data-view="backend">Backend</a>
+          <a href="#">Frontend</a>
+          <a href="#">AI</a>
+          <a href="#devops-topics" data-view="devops">DevOps</a>
+          <a href="#sites-topics" data-view="sites">Site for reference</a>
+          <a href="#functional-topics" data-view="functional">Functional</a>
+        </nav>
+
+     
+      </div>
+    </header>
+ -->
+    <main>
+      <section class="hero" id="overview">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Documentation Hub</span>
+            <h1>Build with clarity, ship with confidence.</h1>
+            <p>
+              Practical guides, architecture notes, and implementation references for backend,
+              frontend, and AI work—organized in one clean place.
+            </p>
+
+            <div class="hero-actions">
+              <a href="git.html" class="btn btn-primary">Open Git basics</a>
+              <a href="#" class="btn btn-primary">Explore guides</a>
+              <a href="#" class="btn btn-secondary">View reference</a>
+            </div>
+
+            <ul class="stats">
+              <li>
+                <strong>120+</strong>
+                <span>Topics</span>
+              </li>
+              <li>
+                <strong>18</strong>
+                <span>Guides</span>
+              </li>
+              <li>
+                <strong>24/7</strong>
+                <span>Reference</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-panel">
+            <div class="window-shell">
+              <div class="window-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="code-block">
+                <div class="code-line comment">// quick start</div>
+                <div class="code-line"><span class="token-key">npm</span> install @docuhub/sdk</div>
+                <div class="code-line"><span class="token-key">const</span> client = <span class="token-keyword">new</span> Docuhub();</div>
+                <div class="code-line">client.connect({ apiKey: process.env.API_KEY });</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="docs-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Explore</span>
+            <h2>Documentation by focus area</h2>
+          </div>
+
+          <div class="card-grid">
+            <article class="doc-card">
+              <div class="card-head">
+                <span class="chip chip-backend">Backend</span>
+                <span class="meta">18 topics</span>
+              </div>
+              <h3>Backend</h3>
+              <p>APIs, services, architecture, data access, integrations, and delivery patterns.</p>
+              <ul>
+                <li>Java and Spring Boot</li>
+                <li>Node.js and APIs</li>
+                <li>Python services</li>
+              </ul>
+            </article>
+
+            <article class="doc-card">
+              <div class="card-head">
+                <span class="chip chip-frontend">Frontend</span>
+                <span class="meta">12 topics</span>
+              </div>
+              <h3>Frontend</h3>
+              <p>UI patterns, component design, routing, performance, and tooling best practices.</p>
+              <ul>
+                <li>JavaScript fundamentals</li>
+                <li>React patterns</li>
+                <li>Modern UX systems</li>
+              </ul>
+            </article>
+
+            <article class="doc-card">
+              <div class="card-head">
+                <span class="chip chip-ai">AI</span>
+                <span class="meta">16 topics</span>
+              </div>
+              <h3>AI</h3>
+              <p>Prompting, model selection, agents, retrieval, and production-grade AI workflows.</p>
+              <ul>
+                <li>LLM foundations</li>
+                <li>AI agents</li>
+                <li>Evaluation and guardrails</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-section">
+        <div class="container feature-layout">
+          <div class="feature-copy">
+            <span class="eyebrow">Why it works</span>
+            <h2>Designed to feel simple, fast, and useful.</h2>
+            <p>
+              No clutter, no noisy dashboards—just clear structure, thoughtful typography, and a
+              straightforward path to the information you need.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-item">
+                <span class="feature-bullet"></span>
+                <div>
+                  <h4>Clear structure</h4>
+                  <p>Topics are grouped by intent and skill area.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <span class="feature-bullet"></span>
+                <div>
+                  <h4>Elegant reading</h4>
+                  <p>Minimal layout with generous spacing and clean hierarchy.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <span class="feature-bullet"></span>
+                <div>
+                  <h4>Built for scale</h4>
+                  <p>Easy to extend as your documentation grows.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="topic-panel">
+            <h3>Popular topics</h3>
+            <ul>
+              <li>Authentication</li>
+              <li>Webhooks</li>
+              <li>Rate limiting</li>
+              <li>Error handling</li>
+              <li>SDK usage</li>
+              <li>Deployment</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="topics-section" id="backend-topics" hidden>
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Backend</span>
+            <h2>Backend topics</h2>
+            <p>Start with the foundations, then move into frameworks, APIs, and production practices.</p>
+          </div>
+
+          <div class="topic-list">
+            <a href="#" class="topic-item">
+              <span class="topic-number">01</span>
+              <span>
+                <strong>Java fundamentals</strong>
+                <small>Syntax, collections, exceptions, and object-oriented programming.</small>
+              </span>
+            </a>
+            <a href="#" class="topic-item">
+              <span class="topic-number">02</span>
+              <span>
+                <strong>Spring Boot</strong>
+                <small>Build maintainable services with configuration, dependency injection, and profiles.</small>
+              </span>
+            </a>
+            <a href="#rest-api-interview" class="topic-item">
+              <span class="topic-number">03</span>
+              <span>
+                <strong>REST APIs</strong>
+                <small>Design resources, handle requests, validate input, and document endpoints.</small>
+              </span>
+            </a>
+            <a href="#" class="topic-item">
+              <span class="topic-number">04</span>
+              <span>
+                <strong>Databases</strong>
+                <small>Persistence, queries, transactions, migrations, and data access patterns.</small>
+              </span>
+            </a>
+            <a href="#" class="topic-item">
+              <span class="topic-number">05</span>
+              <span>
+                <strong>Authentication and security</strong>
+                <small>Protect services with identity, authorization, tokens, and secure defaults.</small>
+              </span>
+            </a>
+            <a href="#" class="topic-item">
+              <span class="topic-number">06</span>
+              <span>
+                <strong>Deployment</strong>
+                <small>Prepare applications for environments, observability, and reliable delivery.</small>
+              </span>
+            </a>
+          </div>
+
+          <div class="interview-section" id="rest-api-interview">
+            <div class="section-heading">
+              <span class="eyebrow">Interview preparation</span>
+              <h2>REST API questions and answers</h2>
+              <p>Common questions to help you explain REST API design clearly in an interview.</p>
+            </div>
+
+            <div class="question-list">
+              <details class="question-item" open>
+                <summary>What is a REST API?</summary>
+                <p>A REST API is an interface that exposes resources over HTTP. Clients interact with those resources using standard methods such as GET, POST, PUT, PATCH, and DELETE.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>What is the difference between PUT and PATCH?</summary>
+                <p>PUT usually replaces the complete resource at a known URI, while PATCH applies a partial update. PATCH is useful when only a few fields need to change.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>What does idempotent mean in REST?</summary>
+                <p>An operation is idempotent when repeating the same request produces the same final result. GET, PUT, and DELETE are intended to be idempotent, while POST is generally not.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>Which HTTP status codes should an API commonly return?</summary>
+                <p>Use 2xx for successful requests, 3xx for redirects, 4xx for client errors such as invalid input or missing authorization, and 5xx for server-side failures.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>How should REST APIs be secured?</summary>
+                <p>Use HTTPS, strong authentication, authorization checks, input validation, rate limiting, secure secret handling, and consistent error responses that do not expose sensitive details.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>How do you version a REST API?</summary>
+                <p>Version the public contract when a breaking change is necessary, commonly through a path such as <code>/api/v1</code> or a version header. Keep older versions supported during a planned migration period.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="topics-section" id="frontend-topics" hidden>
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Frontend</span>
+            <h2>Frontend topics</h2>
+            <p>Choose a guide to explore frontend patterns and practical implementation examples.</p>
+          </div>
+
+          <div class="card-grid frontend-topic-grid">
+            <a class="doc-card frontend-topic-card" href="#javascript-topics" aria-label="Open the reusable JavaScript header component guide">
+              <div class="card-head">
+                <span class="chip chip-frontend">JavaScript</span>
+                <span class="meta">Code example</span>
+              </div>
+              <h3>Reusable header component</h3>
+              <p>Build a browser custom element, add it to an HTML page, and copy a complete test example.</p>
+              <span class="frontend-topic-action">Open guide <span aria-hidden="true">&#8594;</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="topics-section javascript-topics" id="javascript-topics" hidden>
+        <div class="container">
+          <a class="topic-back-link" href="#frontend-topics">&#8592; All frontend topics</a>
+          <div class="section-heading">
+            <span class="eyebrow">Frontend / JavaScript</span>
+            <h2>Build a reusable header component</h2>
+            <p>Use a browser custom element to define a header once and reuse it across your HTML pages without fetching a separate fragment.</p>
+          </div>
+
+          <div class="javascript-guide">
+            <section class="javascript-step">
+              <div class="javascript-step-heading">
+                <span class="javascript-step-number">01</span>
+                <div>
+                  <h3>Define the custom element</h3>
+                  <p>Save this as <code>header.js</code>. The component uses the regular document tree, so your shared stylesheet can style it as usual.</p>
+                </div>
+              </div>
+              <div class="code-snippet">
+                <button class="copy-button" type="button" data-copy-target="site-header-component" aria-label="Copy custom element code">Copy</button>
+                <div class="code-header">header.js</div>
+                <pre><code id="site-header-component" data-language="javascript">class SiteHeader extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      &lt;header class="site-header"&gt;
+        &lt;div class="container header-inner"&gt;
+          &lt;a href="index.html" class="brand"&gt;Docuhub&lt;/a&gt;
+          &lt;nav class="main-nav" aria-label="Primary navigation"&gt;
+            &lt;a href="index.html#overview"&gt;Overview&lt;/a&gt;
+            &lt;a href="index.html#backend-topics"&gt;Backend&lt;/a&gt;
+            &lt;a href="index.html#frontend-topics"&gt;Frontend&lt;/a&gt;
+            &lt;a href="index.html#devops-topics"&gt;DevOps&lt;/a&gt;
+            &lt;a href="index.html#sites-topics"&gt;Sites&lt;/a&gt;
+          &lt;/nav&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+    `;
   }
 }
 
-@media (max-width: 640px) {
-  .header-inner {
-    height: auto;
-    padding: 14px 0;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .brand {
-    width: 100%;
-    text-align: center;
-  }
-
-  .main-nav {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .header-link {
-    display: none;
-  }
-
-  .hero {
-    padding-top: 56px;
-  }
-
-  .hero-copy h1 {
-    font-size: 3rem;
-  }
-
-  .feature-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .git-toc nav {
-    grid-template-columns: 1fr;
-  }
-}
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(180deg, #eaf4ff 0%, #f5faff 42%, #dceeff 100%);
-  color: var(--text);
-  line-height: 1.6;
-}
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(231, 235, 241, 0.9);
-}
-
-.header-inner {
-  height: 78px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-}
-
-.brand {
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.main-nav a {
-  padding: 10px 14px;
-  border-radius: 10px;
-  color: var(--muted-strong);
-  font-size: 0.88rem;
-  font-weight: 600;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.main-nav a:hover,
-.main-nav a:focus-visible {
-  background: #f3f4f6;
-  color: var(--text);
-}
-
-.header-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  padding: 10px 16px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.7);
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.hero {
-  padding: 88px 0 45px;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  align-items: start;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.hero-copy h1 {
-  margin: 18px 0 16px;
-  font-size: clamp(2.8rem, 4vw, 4.4rem);
-  line-height: 0.98;
-  letter-spacing: -0.06em;
-}
-
-.hero-copy p {
-  margin: 0;
-  max-width: 560px;
-  color: var(--muted);
-  font-size: 1.08rem;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 28px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 22px;
-  border-radius: 12px;
-  font-size: 0.92rem;
-  font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-  box-shadow: 0 12px 18px rgba(79, 70, 229, 0.16);
-}
-
-.btn-secondary {
-  background: var(--panel);
-  color: var(--text);
-  border: 1px solid var(--line);
-}
-
-.stats {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  padding: 0;
-  margin: 36px 0 0;
-}
-
-.stats li {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stats strong {
-  font-size: 1.55rem;
-  letter-spacing: -0.04em;
-}
-
-.stats span {
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-
-.hero-panel {
-  display: flex;
-  justify-content: center;
-}
-
-.window-shell {
-  width: min(100%, 500px);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.window-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 46px;
-  padding: 0 16px;
-  background: #f7f9fb;
-  border-bottom: 1px solid var(--line);
-}
-
-.window-bar span {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.window-bar span:nth-child(1) { background: #fbbf24; }
-.window-bar span:nth-child(2) { background: #34d399; }
-.window-bar span:nth-child(3) { background: #f87171; }
-
-.code-block {
-  padding: 22px 20px 24px;
-  background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  font-size: 0.88rem;
-  color: #1f2937;
-}
-
-.code-line {
-  margin: 0 0 10px;
-  color: #334155;
-  letter-spacing: -0.02em;
-}
-
-.code-line.comment {
-  color: #64748b;
-}
-
-.token-key {
-  color: #4f46e5;
-}
-
-.token-keyword {
-  color: #0f766e;
-}
-
-.docs-section,
-.feature-section {
-  padding: 28px 0 64px;
-}
-
-.section-heading {
-  margin-bottom: 28px;
-}
-
-.section-heading h2,
-.feature-copy h2 {
-  margin: 14px 0 0;
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  letter-spacing: -0.05em;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 22px;
-}
-
-.doc-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 22px 20px 18px;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.02);
-}
-
-.card-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 7px 11px;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.chip-backend {
-  background: #eef2ff;
-  color: #4338ca;
-}
-
-.chip-frontend {
-  background: #ecfeff;
-  color: #0f766e;
-}
-
-.chip-ai {
-  background: #fef3c7;
-  color: #b45309;
-}
-
-.meta {
-  color: var(--muted);
-  font-size: 0.74rem;
-  font-weight: 600;
-}
-
-.doc-card h3 {
-  margin: 0 0 12px;
-  font-size: 1.6rem;
-  letter-spacing: -0.04em;
-}
-
-.doc-card p {
-  margin: 0 0 16px;
-  color: var(--muted);
-}
-
-.doc-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 8px;
-}
-
-.doc-card li {
-  position: relative;
-  padding-left: 16px;
-  color: var(--muted-strong);
-  font-size: 0.9rem;
-}
-
-.doc-card li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--primary);
-}
-
-.feature-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.feature-copy p {
-  margin: 16px 0 0;
-  color: var(--muted);
-  max-width: 720px;
-}
-
-.feature-list {
-  display: grid;
-  gap: 18px;
-  margin-top: 30px;
-}
-
-.feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 14px 14px 0;
-  border-top: 1px solid var(--line);
-}
-
-.feature-item:first-child {
-  border-top: none;
-  padding-top: 0;
-}
-
-.feature-bullet {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  margin-top: 8px;
-  background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
-  box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.08);
-}
-
-.feature-item h4 {
-  margin: 0 0 4px;
-  font-size: 1.05rem;
-}
-
-.feature-item p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.93rem;
-}
-
-.topic-panel {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 22px 20px;
-  box-shadow: var(--shadow);
-}
-
-.topic-panel h3 {
-  margin: 0 0 14px;
-  font-size: 1.25rem;
-  letter-spacing: -0.04em;
-}
-
-.topic-panel ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 10px;
-}
-
-.topic-panel li {
-  padding: 11px 12px;
-  border-radius: 10px;
-  background: var(--panel-alt);
-  color: var(--muted-strong);
-  font-size: 0.92rem;
-  font-weight: 600;
-}
-
-.topics-section {
-  padding: 88px 0 72px;
-}
-
-.section-heading p {
-  max-width: 620px;
-  margin: 14px 0 0;
-  color: var(--muted);
-}
-
-.topic-list {
-  display: grid;
-  gap: 12px;
-}
-
-.topic-item {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 16px;
-  align-items: start;
-  padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.86);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.topic-item:hover,
-.topic-item:focus-visible {
-  border-color: #c7d2fe;
-  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.08);
-  transform: translateY(-1px);
-}
-
-.topic-number {
-  color: var(--primary);
-  font-size: 0.78rem;
-  font-weight: 700;
-  padding-top: 3px;
-}
-
-.topic-item strong,
-.topic-item small {
-  display: block;
-}
-
-.interview-section {
-  margin-top: 72px;
-  padding-top: 42px;
-  border-top: 1px solid var(--line);
-}
-
-.question-list {
-  display: grid;
-  gap: 10px;
-}
-
-.question-item {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.86);
-  overflow: hidden;
-}
-
-.question-item summary {
-  cursor: pointer;
-  padding: 18px 20px;
-  color: var(--text);
-  font-size: 0.98rem;
-  font-weight: 700;
-  list-style-position: inside;
-}
-
-.question-item summary::marker {
-  color: var(--primary);
-}
-
-.question-item p {
-  margin: 0;
-  padding: 0 20px 20px 40px;
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.question-item code {
-  padding: 2px 5px;
-  border-radius: 5px;
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 0.86em;
-}
-
-.topic-item strong {
-  margin-bottom: 5px;
-  font-size: 1rem;
-}
-
-.topic-item small {
-  color: var(--muted);
-  font-size: 0.88rem;
-}
-
-.git-page {
-  padding-bottom: 80px;
-}
-
-.git-section {
-  padding: 28px 0 0;
-  scroll-margin-top: 102px;
-}
-
-.git-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 34px;
-  align-items: start;
-}
-
-.git-main .container {
-  width: auto;
-}
-
-.git-toc {
-  position: sticky;
-  top: 102px;
-  margin-top: 32px;
-  padding: 18px;
-  border-left: 1px solid var(--line-strong);
-}
-
-.git-toc nav {
-  display: grid;
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.git-toc a {
-  color: var(--muted);
-  font-size: 0.86rem;
-  font-weight: 600;
-}
-
-.git-toc a:hover,
-.git-toc a:focus-visible {
-  color: var(--primary);
-}
-
-.git-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.git-card,
-.submission-card {
-  padding: 22px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
-}
-
-.git-card h3,
-.submission-card h2 {
-  margin: 0 0 8px;
-  letter-spacing: -0.03em;
-}
-
-.git-card p,
-.submission-card p {
-  margin: 0;
-  color: var(--muted);
-}
-
-.git-card code,
-.git-command {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-}
-
-.git-command {
-  display: block;
-  margin: 0;
-  padding: 12px 14px;
-  overflow-x: auto;
-  border-radius: 6px 6px 0 0;
-  background: #f3f0e8;
-  color: #243b32;
-  font-size: 0.84rem;
-}
-
-.code-snippet {
-  position: relative;
-  margin-top: 16px;
-  overflow: hidden;
-  border: 1px solid #c7bda7;
-  border-radius: 6px;
-  box-shadow: 0 8px 18px rgba(73, 63, 44, 0.12);
-}
-
-.copy-button {
-  display: block;
-  width: 100%;
-  padding: 9px 14px;
-  border: 0;
-  border-top: 1px solid #d8cfbc;
-  background: #315c48;
-  color: #f4f7e9;
-  cursor: pointer;
-  font: 600 0.78rem/1.2 "Inter", sans-serif;
-  text-align: right;
-  transition: background 0.2s ease;
-}
-
-.copy-button:hover,
-.copy-button:focus-visible {
-  background: #3f7459;
-}
-
-.submission-card {
-  margin-top: 28px;
-}
-
-.submission-form {
-  display: grid;
-  gap: 14px;
-  margin-top: 20px;
-}
-
-.submission-form label {
-  display: grid;
-  gap: 6px;
-  color: var(--muted-strong);
-  font-size: 0.88rem;
-  font-weight: 600;
-}
-
-.submission-form input,
-.submission-form textarea {
-  width: 100%;
-  padding: 11px 12px;
-  border: 1px solid var(--line-strong);
-  border-radius: 10px;
-  color: var(--text);
-  font: inherit;
-  background: var(--panel);
-}
-
-.submission-form textarea {
-  min-height: 110px;
-  resize: vertical;
-}
-
-.submission-note {
-  margin-top: 12px !important;
-  font-size: 0.82rem;
-}
-
-.git-issue {
-  margin-top: 34px;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-.git-issue h3 {
-  margin: 12px 0 10px;
-  font-size: 1.35rem;
-  letter-spacing: -0.03em;
-}
-
-.git-issue p {
-  margin: 0 0 16px;
-}
-
-.git-issue .issue-intro {
-  margin-bottom: 22px;
-}
-
-.issue-label {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--text);
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
-.git-issue pre {
-  margin: 0;
-  padding: 16px;
-  overflow-x: auto;
-  border-radius: 0;
-  background: #292c34;
-  color: #d9dee9;
-  font: 0.82rem/1.6 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-}
-
-.git-issue a {
-  color: var(--primary);
-  font-weight: 600;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-@media (max-width: 900px) {
-  .hero-grid,
-  .feature-layout,
-  .card-grid,
-  .git-grid,
-  .git-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .git-toc {
-    position: static;
-    grid-row: 1;
-    margin-top: 28px;
-    border-top: 1px solid var(--line-strong);
-    border-left: 0;
-  }
-
-  .git-toc nav {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .header-inner {
-    gap: 14px;
-  }
-
-  .main-nav {
-    gap: 6px;
-  }
-}
-
-@media (max-width: 640px) {
-  .header-inner {
-    height: auto;
-    padding: 14px 0;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .brand {
-    width: 100%;
-    text-align: center;
-  }
-
-  .main-nav {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .header-link {
-    width: 100%;
-  }
-
-  .hero {
-    padding-top: 56px;
-  }
-
-  .stats {
-    gap: 18px;
-  }
-}
-
-.git-command,
-.git-issue pre {
-  border-radius: 0;
-  background: #292c34;
-  color: #d9dee9;
-}
-
-.code-snippet {
-  overflow: hidden;
-  border: 1px solid #353943;
-  border-radius: 14px;
-  background: #292c34;
-  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
-}
-
-.code-header {
-  padding: 12px 20px;
-  background: #292c34;
-  color: #eef1f7;
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
-.code-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 62px;
-  padding: 10px 18px 10px 20px;
-  border-top: 1px solid #393d47;
-  background: #292c34;
-  color: #e7eaf0;
-  font-size: 0.84rem;
-}
-
-.copy-button {
-  position: relative;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #d8dee9;
-  cursor: pointer;
-  font-size: 0;
-}
-
-.copy-button::before,
-.copy-button::after {
-  position: absolute;
-  display: block;
-  width: 11px;
-  height: 13px;
-  border: 2px solid currentColor;
-  border-radius: 2px;
-  content: "";
-}
-
-.copy-button::before {
-  transform: translate(5px, 2px);
-}
-
-.copy-button::after {
-  transform: translate(1px, -2px);
-  background: #292c34;
-}
-
-.copy-button:hover,
-.copy-button:focus-visible {
-  color: #ffffff;
-}
+customElements.define('site-header', SiteHeader);</code></pre>
+              </div>
+            </section>
+
+            <section class="javascript-step">
+              <div class="javascript-step-heading">
+                <span class="javascript-step-number">02</span>
+                <div>
+                  <h3>Test it in a complete HTML page</h3>
+                  <p>Copy this into <code>header-test.html</code> in the same folder as <code>header.js</code> and <code>styles.css</code>, then open it in your browser.</p>
+                </div>
+              </div>
+              <div class="code-snippet">
+                <button class="copy-button" type="button" data-copy-target="site-header-usage" aria-label="Copy custom element usage">Copy</button>
+                <div class="code-header">header-test.html</div>
+                <pre><code id="site-header-usage" data-language="html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Header component test&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;site-header&gt;&lt;/site-header&gt;
+
+  &lt;main class="container"&gt;
+    &lt;h1&gt;Header component test&lt;/h1&gt;
+    &lt;p&gt;If the shared navigation appears above, the component loaded successfully.&lt;/p&gt;
+  &lt;/main&gt;
+
+  &lt;script src="header.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              </div>
+            </section>
+
+            <aside class="javascript-note">
+              <strong>Works from a local file</strong>
+              <p>This loads a regular JavaScript file instead of fetching an HTML fragment, avoiding the local-file CORS restriction.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="topics-section" id="devops-topics" hidden>
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">DevOps</span>
+            <h2>DevOps topics</h2>
+            <p>Build dependable delivery pipelines, environments, and operations practices.</p>
+          </div>
+
+          <div class="topic-list">
+            <a href="git.html" class="topic-item"><span class="topic-number">01</span><span><strong>Git</strong><small>Manage source code with branching, collaboration, and version control workflows.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">02</span><span><strong>CI/CD pipelines</strong><small>Automate validation, packaging, and delivery from commit to release.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">03</span><span><strong>Containers</strong><small>Package applications consistently with Docker and container workflows.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">04</span><span><strong>Cloud deployment</strong><small>Structure environments, configuration, and repeatable infrastructure.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">05</span><span><strong>Monitoring and observability</strong><small>Track application health with logs, metrics, traces, and alerts.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">06</span><span><strong>Release management</strong><small>Plan safer releases with versioning, rollbacks, and change control.</small></span></a>
+          </div>
+        </div>
+      </section>
+
+<section class="topics-section" id="sites-topics" hidden>
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Sites</span>
+            <h2>Sites for reference</h2>
+            
+          </div>
+
+<article class="doc-card reference-links">
+              <div class="card-head">
+                <span class="chip chip-backend">Sites for reference</span>
+                <span class="meta">18 topics</span>
+              </div>
+              <h3>Architecture</h3>              
+              <p><a href="https://codeopinion.com/multi-tenant-best-practices-can-backfire/?via=dailydev" target="_blank" rel="noopener noreferrer">Multi-tenant best practices can backfire</a></p>
+              <p><a href="https://tinyurl.com/2s3zxeam" target="_blank" rel="noopener noreferrer">Grokking the System Design Interview</a></p>
+<p><a href="https://learn.microsoft.com/en-us/azure/architecture/" target="_blank" rel="noopener noreferrer">Microsoft Azure Architecture Center</a></p>
+
+            </article>
+
+
+          
+          
+
+
+
+          
+        </div>
+      </section>
+
+      <section class="topics-section" id="functional-topics" hidden>
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Functional</span>
+            <h2>Functional topics</h2>
+            <p>Capture product behavior clearly, from requirements through acceptance and delivery.</p>
+          </div>
+
+          <div class="topic-list">
+            <a href="#" class="topic-item"><span class="topic-number">01</span><span><strong>Requirements</strong><small>Define business goals, scope, rules, and measurable outcomes.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">02</span><span><strong>User journeys</strong><small>Map how people move through features and complete important tasks.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">03</span><span><strong>Acceptance criteria</strong><small>Turn expected behavior into clear, testable conditions.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">04</span><span><strong>Process documentation</strong><small>Record workflows, decisions, ownership, and operational steps.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">05</span><span><strong>Testing scenarios</strong><small>Cover happy paths, edge cases, permissions, and failure behavior.</small></span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="header.js"></script>
+    
+  </body>
+</html>
