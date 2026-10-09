@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function viewFromHash() {
         const hash = window.location.hash.replace('#', '');
-        return ['backend', 'devops', 'functional'].includes(hash.replace('-topics', ''))
+        return ['backend', 'frontend', 'javascript', 'devops', 'sites', 'functional'].includes(hash.replace('-topics', ''))
             ? hash.replace('-topics', '')
             : 'overview';
     }
@@ -53,8 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const source = code.tagName === 'PRE'
             ? code.textContent
             : code.innerHTML.replace(/<br\s*\/?>/gi, '\n');
-        code.dataset.source = source;
-        code.innerHTML = highlightCode(source, code.dataset.language);
+            const decodedSource = decodeCodeEntities(source);
+            code.dataset.source = decodedSource;
+            code.innerHTML = highlightCode(decodedSource, code.dataset.language);
     });
 
     document.querySelectorAll('[data-copy-target]').forEach((button) => {
@@ -65,7 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const content = (code.dataset.source || code.textContent).trim().replace(/^\s+/gm, '');
+            const source = (code.dataset.source || code.textContent).replace(/\r\n/g, '\n').trim();
+            const lines = source.split('\n');
+            const indentation = Math.min(...lines
+                .filter((line) => line.trim())
+                .map((line) => line.match(/^[\t ]*/)[0].length));
+            const content = Number.isFinite(indentation)
+                ? lines.map((line) => line.slice(indentation)).join('\n')
+                : source;
 
             try {
                 if (navigator.clipboard && window.isSecureContext) {
@@ -93,24 +101,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function highlightCode(source, language) {
-        let highlighted = escapeHtml(source.trim().replace(/^\s+/gm, ''));
-
-        highlighted = highlighted.replace(/(&quot;.*?&quot;|&#39;.*?&#39;|&quot;.*?&quot;)/g, '<span class="syntax-string">$1</span>');
-        highlighted = highlighted.replace(/(\/\/.*|#.*|&lt;!--.*?--&gt;)/g, '<span class="syntax-comment">$1</span>');
+        const normalizedSource = source.replace(/\r\n/g, '\n').trim();
+        const lines = normalizedSource.split('\n');
+        const indentation = Math.min(...lines
+            .filter((line) => line.trim())
+            .map((line) => line.match(/^[\t ]*/)[0].length));
+        const formattedSource = Number.isFinite(indentation)
+            ? lines.map((line) => line.slice(indentation)).join('\n')
+            : normalizedSource;
+        const escaped = escapeHtml(formattedSource);
+        let highlighted = escaped;
 
         if (language === 'html') {
-            highlighted = highlighted.replace(/(&lt;\/?[\w-]+|[\w-]+(?==))/g, '<span class="syntax-tag">$1</span>');
+            highlighted = escaped.replace(/(&lt;!--.*?--&gt;)|(&lt;\/?[A-Za-z][\w-]*|&gt;)|([\w-]+)(?==)|(&quot;.*?&quot;|&#39;.*?&#39;)/g, (token, comment, tag, attribute, string) => {
+                if (comment) return `<span class="syntax-comment">${comment}</span>`;
+                if (tag) return `<span class="syntax-tag">${tag}</span>`;
+                if (attribute) return `<span class="syntax-attribute">${attribute}</span>`;
+                if (string) return `<span class="syntax-string">${string}</span>`;
+                return token;
+            });
         } else if (language === 'javascript' || language === 'java') {
-            highlighted = highlighted.replace(/\b(const|let|var|function|return|class|public|private|static|void|new|if|else|for|while|import|from|extends)\b/g, '<span class="syntax-keyword">$1</span>');
-            highlighted = highlighted.replace(/\b(true|false|null|undefined|this)\b/g, '<span class="syntax-literal">$1</span>');
+            highlighted = escaped.replace(/(\/\/[^\n]*)|(&quot;.*?&quot;|&#39;.*?&#39;)|(&lt;\/?[A-Za-z][\w-]*|&gt;)|\b(const|let|var|function|return|class|public|private|static|void|new|if|else|for|while|import|from|extends)\b|\b(true|false|null|undefined|this)\b/g, (token, comment, string, tag, keyword, literal) => {
+                if (comment) return `<span class="syntax-comment">${comment}</span>`;
+                if (string) return `<span class="syntax-string">${string}</span>`;
+                if (tag) return `<span class="syntax-tag">${tag}</span>`;
+                if (keyword) return `<span class="syntax-keyword">${keyword}</span>`;
+                if (literal) return `<span class="syntax-literal">${literal}</span>`;
+                return token;
+            });
         } else if (language === 'bash') {
-            highlighted = highlighted.replace(/^(git)\b/gm, '<span class="syntax-command">$1</span>');
+            highlighted = escaped.replace(/^(git)\b/gm, '<span class="syntax-command">$1</span>');
         }
 
-        return highlighted.replace(/\n/g, '<br />');
+        return highlighted;
     }
 
     function escapeHtml(value) {
         return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
+
+        function decodeCodeEntities(value) {
+            return value
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&quot;/g, '"')
+                .replace(/&#39;/g, "'")
+                .replace(/&amp;/g, '&');
+        }
+
+    
 });
