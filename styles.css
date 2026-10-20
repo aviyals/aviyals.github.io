@@ -547,6 +547,30 @@ img {
   color: #087c75;
 }
 
+.integration-topic {
+  scroll-margin-top: 100px;
+}
+
+.integration-topic h3 {
+  margin: 28px 0 8px;
+  font-size: 1.08rem;
+}
+
+.integration-topic > p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.integration-capabilities,
+.integration-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px 24px;
+  margin: 12px 0 0;
+  padding-left: 20px;
+  color: var(--muted-strong);
+}
+
 .javascript-topics .section-heading {
   margin-bottom: 34px;
 }
@@ -776,6 +800,10 @@ img {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+}
+
+.git-grid.git-tutorial-list {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .git-card,
