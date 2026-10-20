@@ -21,9 +21,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function viewFromHash() {
         const hash = window.location.hash.replace('#', '');
+        if (hash === 'integration-topic') {
+            return 'backend';
+        }
+
         return ['backend', 'frontend', 'javascript', 'devops', 'sites', 'functional'].includes(hash.replace('-topics', ''))
             ? hash.replace('-topics', '')
             : 'overview';
+    }
+
+    function syncViewToHash() {
+        const hash = window.location.hash.replace('#', '');
+        showView(viewFromHash());
+
+        if (hash === 'integration-topic') {
+            requestAnimationFrame(() => {
+                document.getElementById(hash)?.scrollIntoView({ block: 'start' });
+            });
+        }
     }
 
     viewLinks.forEach((link) => {
@@ -44,10 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    showView(viewFromHash());
-    window.addEventListener('hashchange', () => {
-        showView(viewFromHash());
-    });
+    syncViewToHash();
+    window.addEventListener('hashchange', syncViewToHash);
 
     document.querySelectorAll('[data-language]').forEach((code) => {
         const source = code.tagName === 'PRE'
