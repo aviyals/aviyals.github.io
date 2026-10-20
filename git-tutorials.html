@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git Tutorials | Docuhub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="git.html" class="brand">Docuhub</a>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html#overview">Overview</a>
+          <a href="index.html#devops-topics">DevOps</a>
+          <a href="git.html">Git</a>
+        </nav>
+        <a href="git.html" class="header-link">Back to Git</a>
+      </div>
+    </header>
+
+    <nav class="breadcrumb container" aria-label="Breadcrumb">
+      <a href="index.html#overview">Home</a><span>/</span><a href="index.html#devops-topics">DevOps</a><span>/</span><a href="git.html">Git</a><span>/</span><span aria-current="page">Tutorials</span>
+    </nav>
+
+    <main class="git-page">
+      <section class="hero">
+        <div class="container hero-copy">
+          <span class="eyebrow">Git / Tutorials</span>
+          <h1>Git tutorials for beginners.</h1>
+          <p>Follow a practical path from creating your first repository to sharing and undoing changes safely.</p>
+        </div>
+      </section>
+
+      <section class="git-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Start here</span>
+            <h2>Basic tutorials</h2>
+            <p>A short path from your first repository to a clean team workflow.</p>
+          </div>
+
+          <div class="git-grid git-tutorial-list">
+            <article class="git-card">
+              <h3>1. Create a repository</h3>
+              <p>Initialize a project, check its status, and make your first commit.</p>
+              <div class="code-snippet"><code class="git-command" data-language="bash" id="git-init-code">git init<br />git add .<br />git commit -m "Initial commit"</code><button class="copy-button" type="button" data-copy-target="git-init-code" aria-label="Copy code">Copy</button></div>
+            </article>
+            <article class="git-card">
+              <h3>2. Work with branches</h3>
+              <p>Keep feature work separate, then bring it back into the main branch.</p>
+              <div class="code-snippet"><code class="git-command" data-language="bash" id="git-branch-code">git switch -c feature/login<br />git switch main<br />git merge feature/login</code><button class="copy-button" type="button" data-copy-target="git-branch-code" aria-label="Copy code">Copy</button></div>
+            </article>
+            <article class="git-card">
+              <h3>3. Share changes</h3>
+              <p>Connect a remote repository and publish your local branch.</p>
+              <div class="code-snippet"><code class="git-command" data-language="bash" id="git-share-code">git remote add origin URL<br />git push -u origin main<br />git pull</code><button class="copy-button" type="button" data-copy-target="git-share-code" aria-label="Copy code">Copy</button></div>
+            </article>
+            <article class="git-card">
+              <h3>4. Undo safely</h3>
+              <p>Inspect changes before deciding whether to restore, reset, or revert them.</p>
+              <div class="code-snippet"><code class="git-command" data-language="bash" id="git-undo-code">git diff<br />git restore file.txt<br />git revert COMMIT_ID</code><button class="copy-button" type="button" data-copy-target="git-undo-code" aria-label="Copy code">Copy</button></div>
+            </article>
+            <article class="git-card" id="rename-branch">
+              <h3>5. Rename a branch</h3>
+              <p>Rename <code>feature/1124-employee-login</code> to <code>fix/1124-employee-login</code> locally.</p>
+              <ol>
+                <li>
+                  <p>Verify the current branch. Continue only if the output is <code>feature/1124-employee-login</code>. If it is different or empty, stop and switch to the intended branch first.</p>
+                  <div class="code-snippet"><code class="git-command" data-language="bash" id="git-rename-check-code">git branch --show-current</code><button class="copy-button" type="button" data-copy-target="git-rename-check-code" aria-label="Copy code">Copy</button></div>
+                  <p>Sample output:</p>
+                  <pre class="git-command"><samp>feature/1124-employee-login</samp></pre>
+                </li>
+                <li>
+                  <p>Rename the branch using its existing and new names.</p>
+                  <div class="code-snippet"><code class="git-command" data-language="bash" id="git-rename-code">git branch -m feature/1124-employee-login fix/1124-employee-login</code><button class="copy-button" type="button" data-copy-target="git-rename-code" aria-label="Copy code">Copy</button></div>
+                </li>
+                <li>
+                  <p>Verify that the current branch is now <code>fix/1124-employee-login</code>.</p>
+                  <div class="code-snippet"><code class="git-command" data-language="bash" id="git-rename-verify-code">git branch --show-current</code><button class="copy-button" type="button" data-copy-target="git-rename-verify-code" aria-label="Copy code">Copy</button></div>
+                  <p>Sample output:</p>
+                  <pre class="git-command"><samp>fix/1124-employee-login</samp></pre>
+                </li>
+              </ol>
+              <p>This changes the local branch name only; an existing remote branch is unchanged.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
