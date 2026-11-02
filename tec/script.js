@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
         viewLinks.forEach((link) => {
             link.classList.toggle('active', link.dataset.view === view);
         });
+        document.dispatchEvent(new Event('docuhub:viewchange'));
     }
 
     function viewFromHash() {
         const hash = window.location.hash.replace('#', '');
-        if (hash === 'integration-topic') {
-            return 'backend';
-        }
+        const topicSection = document.getElementById(hash)?.closest('.topics-section');
+        if (topicSection) return topicSection.id.replace('-topics', '');
 
-        return ['backend', 'frontend', 'javascript', 'devops', 'sites', 'functional'].includes(hash.replace('-topics', ''))
+        return ['backend', 'frontend', 'javascript', 'devops', 'sites'].includes(hash.replace('-topics', ''))
             ? hash.replace('-topics', '')
             : 'overview';
     }
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hash = window.location.hash.replace('#', '');
         showView(viewFromHash());
 
-        if (hash === 'integration-topic') {
+        if (document.getElementById(hash)?.closest('.topics-section')) {
             requestAnimationFrame(() => {
                 document.getElementById(hash)?.scrollIntoView({ block: 'start' });
             });
