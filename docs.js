@@ -1,53 +1,107 @@
 (() => {
+  const themeKey = 'docuhub-theme';
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+  let preferredTheme = null;
+  try {
+    const savedTheme = window.localStorage.getItem(themeKey);
+    if (savedTheme === 'light' || savedTheme === 'dark') preferredTheme = savedTheme;
+  } catch (error) {
+    console.warn('Docuhub could not read the saved theme preference.', error);
+  }
+  document.documentElement.dataset.theme = preferredTheme || (systemTheme.matches ? 'dark' : 'light');
   const root = new URL('.', document.currentScript.src);
   const url = (path) => new URL(path, root).href;
   const isEnglish = window.location.pathname.endsWith('/eng/index.html')
     || window.location.pathname.endsWith('/eng/');
   const isFun = window.location.pathname.endsWith('/fun/index.html')
     || window.location.pathname.endsWith('/fun/');
+  const sectionHome = isEnglish ? 'eng/index.html' : isFun ? 'fun/index.html' : 'tec/index.html';
+  const sectionLabel = isEnglish ? 'English' : isFun ? 'Functional' : 'Technical';
   const header = document.querySelector('.site-header');
   const main = document.querySelector('main');
   const headerInner = header.querySelector('.header-inner');
 
   headerInner.innerHTML = `
-    <a href="${url('index.html')}" class="brand">
+    <a href="${url(sectionHome)}" class="brand">
       <span class="docs-brand-mark" aria-hidden="true">D</span>
-      Docuhub <span class="docs-brand-label">Documentation</span>
+      Docuhub <span class="docs-brand-label">${sectionLabel}</span>
     </a>
     <nav class="main-nav" aria-label="Primary navigation">
-      <a href="${url('index.html#overview')}"${!isEnglish && !isFun ? ' aria-current="page"' : ''}>Documentation</a>
-      <a href="${url('eng/index.html')}"${isEnglish ? ' aria-current="page"' : ''}>English</a>
-      <a href="${url('fun/index.html')}"${isFun ? ' aria-current="page"' : ''}>Fun</a>
-      ${isEnglish ? '<a href="#topics">Topics</a><a href="#daily-english">Daily English</a>' : ''}
+      ${isEnglish
+        ? '<a href="#english-overview">Overview</a><a href="#topics">Topics</a><a href="#daily-english">Daily English</a>'
+        : isFun
+          ? '<a href="#overview">Overview</a><a href="#functional-topics">Topics</a>'
+          : `<a href="${url('tec/index.html#overview')}">Overview</a>
+             <a href="${url('tec/index.html#backend-topics')}">Backend</a>
+             <a href="${url('tec/index.html#frontend-topics')}">Frontend</a>
+             <a href="${url('tec/index.html#devops-topics')}">DevOps</a>`}
     </nav>
+    <button class="docs-theme-button" type="button" aria-label="Dark mode" aria-pressed="false">Dark mode</button>
     <button class="docs-menu-button" type="button" aria-expanded="false" aria-controls="docs-sidebar">Browse docs</button>
   `;
+
+  const themeButton = header.querySelector('.docs-theme-button');
+  function applyTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    themeButton.setAttribute('aria-pressed', String(theme === 'dark'));
+    themeButton.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+  }
+  applyTheme(document.documentElement.dataset.theme);
+  themeButton.addEventListener('click', () => {
+    preferredTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    applyTheme(preferredTheme);
+    try {
+      window.localStorage.setItem(themeKey, preferredTheme);
+      themeButton.removeAttribute('title');
+    } catch (error) {
+      console.warn('Docuhub could not save the theme preference.', error);
+      themeButton.title = 'Theme changed, but your browser could not save the preference.';
+    }
+  });
+  systemTheme.addEventListener('change', (event) => {
+    if (!preferredTheme) applyTheme(event.matches ? 'dark' : 'light');
+  });
+  window.addEventListener('storage', (event) => {
+    if (event.key !== themeKey && event.key !== null) return;
+    preferredTheme = event.newValue === 'light' || event.newValue === 'dark' ? event.newValue : null;
+    applyTheme(preferredTheme || (systemTheme.matches ? 'dark' : 'light'));
+  });
 
   const shell = document.createElement('div');
   shell.className = 'docs-shell';
   const sidebar = document.createElement('aside');
   sidebar.id = 'docs-sidebar';
   sidebar.className = 'docs-sidebar';
-  sidebar.innerHTML = `
-    <p class="docs-nav-heading">Documentation</p>
-    <nav aria-label="Documentation topics">
-      <a href="${url('index.html#overview')}">Overview</a>
-      <a href="${url('index.html#backend-topics')}">Backend</a>
-      <a href="${url('index.html#frontend-topics')}">Frontend</a>
-      <a href="${url('index.html#devops-topics')}">DevOps</a>
-      <a href="${url('git.html')}" class="docs-nav-child">Git overview</a>
-      <a href="${url('git-commands.html')}" class="docs-nav-child">Basic commands</a>
-      <a href="${url('git-branching.html')}" class="docs-nav-child">Branching strategy</a>
-      <a href="${url('git-challenges.html')}" class="docs-nav-child">Challenges</a>
-      <a href="${url('index.html#functional-topics')}">Functional</a>
-      <a href="${url('index.html#sites-topics')}">Sites for reference</a>
-    </nav>
-    <p class="docs-nav-heading">Learning</p>
-    <nav aria-label="Learning topics">
-      <a href="${url('eng/index.html')}">English</a>
+  sidebar.innerHTML = isEnglish ? `
+    <p class="docs-nav-heading">English</p>
+    <nav aria-label="English topics">
+      <a href="${url('eng/index.html')}">Overview</a>
+      <a href="${url('eng/index.html#topics')}">Topics</a>
       <a href="${url('eng/index.html#weather')}" class="docs-nav-child">Weather</a>
-      <a href="${url('eng/index.html#daily-english')}" class="docs-nav-child">Daily English</a>
-      <a href="${url('fun/index.html')}">Fun</a>
+      <a href="${url('eng/index.html#daily-english')}">Daily English</a>
+    </nav>
+  ` : isFun ? `
+    <p class="docs-nav-heading">Functional</p>
+    <nav aria-label="Functional topics">
+      <a href="${url('fun/index.html')}">Overview</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#user-journeys">User journeys</a>
+      <a href="#acceptance-criteria">Acceptance criteria</a>
+      <a href="#process-documentation">Process documentation</a>
+      <a href="#testing-scenarios">Testing scenarios</a>
+    </nav>
+  ` : `
+    <p class="docs-nav-heading">Technical documentation</p>
+    <nav aria-label="Documentation topics">
+      <a href="${url('tec/index.html#overview')}">Overview</a>
+      <a href="${url('tec/index.html#backend-topics')}">Backend</a>
+      <a href="${url('tec/index.html#frontend-topics')}">Frontend</a>
+      <a href="${url('tec/index.html#devops-topics')}">DevOps</a>
+      <a href="${url('tec/git.html')}" class="docs-nav-child">Git overview</a>
+      <a href="${url('tec/git-commands.html')}" class="docs-nav-child">Basic commands</a>
+      <a href="${url('tec/git-branching.html')}" class="docs-nav-child">Branching strategy</a>
+      <a href="${url('tec/git-challenges.html')}" class="docs-nav-child">Challenges</a>
+      <a href="${url('tec/index.html#sites-topics')}">Sites for reference</a>
     </nav>
   `;
 
