@@ -59,6 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const target = document.getElementById(link.hash.slice(1));
+            const topicSection = target?.closest('.topics-section');
+
+            if (!target || !topicSection || target === topicSection) {
+                return;
+            }
+
+            event.preventDefault();
+            showView(topicSection.id.replace(/-topics$/, ''));
+            if (window.location.hash !== link.hash) {
+                window.history.pushState(null, '', link.hash);
+            }
+            requestAnimationFrame(() => {
+                target.scrollIntoView({ block: 'start' });
+            });
+        });
+    });
+
     syncViewToHash();
     window.addEventListener('hashchange', syncViewToHash);
 
