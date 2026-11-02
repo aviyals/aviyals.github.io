@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Documentation | Docuhub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../docs.css" />
+  </head>
+  <body>
+
+    <site-header></site-header>
+    <main>
+      <section class="hero" id="overview">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Technical documentation</span>
+            <h1>Explore technical topics</h1>
+            <p>
+              Find practical engineering guides, command references, and architecture resources.
+              Browse a topic below or use the navigation to pick up where you left off.
+            </p>
+
+            <div class="hero-actions">
+              <a href="git-commands.html" class="btn btn-primary">Git command reference</a>
+              <a href="#backend-topics" class="btn btn-secondary">Explore backend topics</a>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <section class="docs-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Explore</span>
+            <h2>Browse by topic</h2>
+          </div>
+
+          <div class="card-grid">
+            <a class="doc-card" href="#backend-topics">
+              <div class="card-head">
+                <span class="chip chip-backend">Backend</span>
+              </div>
+              <h3>Backend</h3>
+              <p>APIs, services, architecture, data access, integrations, and delivery patterns.</p>
+              <ul>
+                <li>Java and Spring Boot</li>
+                <li>Node.js and APIs</li>
+                <li>Python services</li>
+              </ul>
+            </a>
+
+            <a class="doc-card" href="#frontend-topics">
+              <div class="card-head">
+                <span class="chip chip-frontend">Frontend</span>
+              </div>
+              <h3>Frontend</h3>
+              <p>UI patterns, component design, routing, performance, and tooling best practices.</p>
+              <ul>
+                <li>JavaScript fundamentals</li>
+                <li>React patterns</li>
+                <li>Modern UX systems</li>
+              </ul>
+            </a>
+
+            <a class="doc-card" href="#devops-topics">
+              <div class="card-head">
+                <span class="chip chip-backend">DevOps</span>
+              </div>
+              <h3>DevOps</h3>
+              <p>Version control, delivery pipelines, environments, and operations.</p>
+              <ul>
+                <li>Git commands</li>
+                <li>Branching strategies</li>
+                <li>Common challenges</li>
+              </ul>
+            </a>
+            <a class="doc-card" href="#sites-topics">
+              <div class="card-head"><span class="chip chip-frontend">Reference</span></div>
+              <h3>Sites for reference</h3>
+              <p>A collection of useful reading on architecture and software design.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="topics-section" id="backend-topics" hidden>
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Backend</span>
+            <h2>Backend topics</h2>
+            <p>Start with the foundations, then move into frameworks, APIs, and production practices.</p>
+          </div>
+
+          <div class="topic-list">
+            <a href="#java-evolution" class="topic-item">
+              <span class="topic-number">01</span>
+              <span>
+                <strong>Java fundamentals</strong>
+                <small>Java language milestones, modern features, and upgrade considerations.</small>
+              </span>
+            </a>
+            <a href="#spring-boot-langchain4j" class="topic-item">
+              <span class="topic-number">02</span>
+              <span>
+                <strong>Spring Boot</strong>
+                <small>Build modern Java services and add AI capabilities with LangChain4j.</small>
+              </span>
+            </a>
+            <a href="#rest-api-interview" class="topic-item">
+              <span class="topic-number">03</span>
+              <span>
+                <strong>REST APIs</strong>
+                <small>Design resources, handle requests, validate input, and document endpoints.</small>
+              </span>
+            </a>
+            <a href="#" class="topic-item">
+              <span class="topic-number">04</span>
+              <span>
+                <strong>Databases</strong>
+                <small>Persistence, queries, transactions, migrations, and data access patterns.</small>
+              </span>
+            </a>
+            <a href="#" class="topic-item">
+              <span class="topic-number">05</span>
+              <span>
+                <strong>Authentication and security</strong>
+                <small>Protect services with identity, authorization, tokens, and secure defaults.</small>
+              </span>
+            </a>
+            <a href="#" class="topic-item">
+              <span class="topic-number">06</span>
+              <span>
+                <strong>Deployment</strong>
+                <small>Prepare applications for environments, observability, and reliable delivery.</small>
+              </span>
+            </a>
+            <a href="#integration-topic" class="topic-item">
+              <span class="topic-number">07</span>
+              <span>
+                <strong>Integration</strong>
+                <small>Connect services and applications with messaging, routing, and transformation.</small>
+              </span>
+            </a>
+          </div>
+
+          <section class="interview-section java-evolution" id="java-evolution">
+            <div class="section-heading">
+              <span class="eyebrow">Backend / Java</span>
+              <h2>Java 8 to Java 27: How Java has evolved</h2>
+              <p>From the game-changing features of Java 8 to the modern capabilities of Java 27, these are the milestones Java developers should know.</p>
+            </div>
+
+            <figure class="java-evolution-figure">
+              <img
+                src="assets/java-version-evolution.png"
+                alt="Infographic tracing Java releases from Java 8 through Java 27, their key features, and advice for developers."
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>A visual overview of Java's release milestones and key takeaways for developers.</figcaption>
+            </figure>
+
+            <h3>Major Java milestones</h3>
+            <ul class="java-version-list">
+              <li><strong>Java 8:</strong> Lambda expressions, the Stream API, functional interfaces, Optional, and the modern Date &amp; Time API.</li>
+              <li><strong>Java 11 (LTS):</strong> The standard HTTP Client, <code>var</code> in lambda parameters, single-file source-code execution, and improvements for enterprise applications.</li>
+              <li><strong>Java 17 (LTS):</strong> Sealed classes, pattern matching for <code>instanceof</code>, stronger encapsulation, and a more modern Java platform.</li>
+              <li><strong>Java 21 (LTS):</strong> Virtual threads, record patterns, pattern matching for <code>switch</code>, and sequenced collections.</li>
+              <li><strong>Java 24:</strong> Virtual-thread synchronization improvements through JEP 491, alongside runtime and performance enhancements.</li>
+              <li><strong>Java 25 (LTS):</strong> Module Import Declarations, Compact Source Files and Instance main Methods, Flexible Constructor Bodies, and continued platform improvements.</li>
+              <li><strong>Java 26:</strong> HTTP/3 support in the HTTP Client API, garbage-collection improvements, and continued language and runtime evolution.</li>
+              <li><strong>Java 27:</strong> The next step in Java's evolution, continuing the regular feature-release cycle.</li>
+            </ul>
+
+            <h3>What to focus on as a Java developer</h3>
+            <ul class="java-focus-list">
+              <li>Master Java 8 fundamentals; they remain essential in many existing codebases.</li>
+              <li>Strengthen your knowledge of Java 17 and Java 21 for modern backend development.</li>
+              <li>Understand virtual threads, garbage collection, JVM tuning, and concurrency.</li>
+              <li>Explore modern Java language features and learn when to use them.</li>
+              <li>Check framework, library, and dependency compatibility before upgrading.</li>
+              <li>Remember that a newer Java version does not automatically make your application faster.</li>
+            </ul>
+          </section>
+
+          <section class="interview-section spring-boot-langchain" id="spring-boot-langchain4j">
+            <div class="section-heading">
+              <span class="eyebrow">Backend / Spring</span>
+              <h2>Spring Boot + LangChain4j: Build AI-powered Java applications</h2>
+              <p>Combine Spring Boot's production-ready Java framework with LangChain4j to build backend services that use large language models and generative AI.</p>
+            </div>
+
+            <figure class="spring-boot-langchain-figure">
+              <img
+                src="assets/spring-boot-langchain4j.png"
+                alt="Spring Boot and LangChain4j infographic showing framework updates, AI integrations, and application use cases."
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Spring Boot and LangChain4j features and use cases at a glance.</figcaption>
+            </figure>
+
+            <h3>Spring Boot 4.1 updates</h3>
+            <ul class="spring-boot-langchain-list">
+              <li>Spring gRPC support and updated Jackson configuration.</li>
+              <li>HTTP client SSRF mitigation and OpenTelemetry observability updates.</li>
+              <li>Log4j file rotation support and native image / AOT improvements.</li>
+              <li>Performance, stability, and security enhancements.</li>
+            </ul>
+
+            <h3>LangChain4j 1.22.0 updates</h3>
+            <ul class="spring-boot-langchain-list">
+              <li>OpenAI decision-model support and AWS Bedrock batch inference.</li>
+              <li>Anthropic prompt caching and improved model integration and orchestration.</li>
+              <li>Improved RAG and document processing.</li>
+              <li>Enhanced tool-calling and agent capabilities, with enterprise and community support.</li>
+            </ul>
+
+            <h3>What you can build</h3>
+            <ul class="spring-boot-langchain-list">
+              <li>With Spring Boot: scalable REST APIs, microservices, database-backed and cloud-ready applications, and AI-powered backend services.</li>
+              <li>With LangChain4j: applications that connect to LLM providers such as OpenAI, Azure OpenAI, Gemini, Llama, and Mistral.</li>
+              <li>Build retrieval-augmented generation (RAG) applications, AI agents, and workflows.</li>
+              <li>Connect AI applications to enterprise systems and APIs, and automate business processes.</li>
+              <li>Use Spring Boot for a production-ready foundation, including security, observability, and cloud-native support.</li>
+            </ul>
+          </section>
+
+          <section class="interview-section integration-topic" id="integration-topic">
+            <div class="section-heading">
+              <span class="eyebrow">Backend / Integration</span>
+              <h2>Enterprise Service Bus (ESB)</h2>
+              <p>An ESB is a complete integration platform that mediates communication between applications and services.</p>
+            </div>
+
+            <h3>What an ESB provides</h3>
+            <ul class="integration-capabilities">
+              <li>Message transport</li>
+              <li>Routing</li>
+              <li>Orchestration</li>
+              <li>Data transformation</li>
+              <li>Protocol conversion</li>
+              <li>Security</li>
+              <li>Monitoring</li>
+              <li>Service mediation</li>
+            </ul>
+
+            <h3>Examples</h3>
+            <ul class="integration-products">
+              <li>MuleSoft</li>
+              <li>IBM Integration Bus</li>
+              <li>Oracle Service Bus</li>
+              <li>TIBCO ESB</li>
+            </ul>
+          </section>
+
+          <div class="interview-section" id="rest-api-interview">
+            <div class="section-heading">
+              <span class="eyebrow">Interview preparation</span>
+              <h2>REST API questions and answers</h2>
+              <p>Common questions to help you explain REST API design clearly in an interview.</p>
+            </div>
+
+            <div class="question-list">
+              <details class="question-item" open>
+                <summary>What is a REST API?</summary>
+                <p>A REST API is an interface that exposes resources over HTTP. Clients interact with those resources using standard methods such as GET, POST, PUT, PATCH, and DELETE.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>What is the difference between PUT and PATCH?</summary>
+                <p>PUT usually replaces the complete resource at a known URI, while PATCH applies a partial update. PATCH is useful when only a few fields need to change.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>What does idempotent mean in REST?</summary>
+                <p>An operation is idempotent when repeating the same request produces the same final result. GET, PUT, and DELETE are intended to be idempotent, while POST is generally not.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>Which HTTP status codes should an API commonly return?</summary>
+                <p>Use 2xx for successful requests, 3xx for redirects, 4xx for client errors such as invalid input or missing authorization, and 5xx for server-side failures.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>How should REST APIs be secured?</summary>
+                <p>Use HTTPS, strong authentication, authorization checks, input validation, rate limiting, secure secret handling, and consistent error responses that do not expose sensitive details.</p>
+              </details>
+
+              <details class="question-item">
+                <summary>How do you version a REST API?</summary>
+                <p>Version the public contract when a breaking change is necessary, commonly through a path such as <code>/api/v1</code> or a version header. Keep older versions supported during a planned migration period.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="topics-section" id="frontend-topics" hidden>
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Frontend</span>
+            <h2>Frontend topics</h2>
+            <p>Choose a guide to explore frontend patterns and practical implementation examples.</p>
+          </div>
+
+          <div class="card-grid frontend-topic-grid">
+            <a class="doc-card frontend-topic-card" href="#javascript-topics" aria-label="Open the reusable JavaScript header component guide">
+              <div class="card-head">
+                <span class="chip chip-frontend">JavaScript</span>
+                <span class="meta">Code example</span>
+              </div>
+              <h3>Reusable header component</h3>
+              <p>Build a browser custom element, add it to an HTML page, and copy a complete test example.</p>
+              <span class="frontend-topic-action">Open guide <span aria-hidden="true">&#8594;</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="topics-section javascript-topics" id="javascript-topics" hidden>
+        <div class="container">
+          <a class="topic-back-link" href="#frontend-topics">&#8592; All frontend topics</a>
+          <div class="section-heading">
+            <span class="eyebrow">Frontend / JavaScript</span>
+            <h2>Build a reusable header component</h2>
+            <p>Use a browser custom element to define a header once and reuse it across your HTML pages without fetching a separate fragment.</p>
+          </div>
+
+          <div class="javascript-guide">
+            <section class="javascript-step">
+              <div class="javascript-step-heading">
+                <span class="javascript-step-number">01</span>
+                <div>
+                  <h3>Define the custom element</h3>
+                  <p>Save this as <code>header.js</code>. The component uses the regular document tree, so your shared stylesheet can style it as usual.</p>
+                </div>
+              </div>
+              <div class="code-snippet">
+                <button class="copy-button" type="button" data-copy-target="site-header-component" aria-label="Copy custom element code">Copy</button>
+                <div class="code-header">header.js</div>
+                <pre><code id="site-header-component" data-language="javascript">class SiteHeader extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      &lt;header class="site-header"&gt;
+        &lt;div class="container header-inner"&gt;
+          &lt;a href="index.html" class="brand"&gt;Docuhub&lt;/a&gt;
+          &lt;nav class="main-nav" aria-label="Primary navigation"&gt;
+            &lt;a href="index.html#overview"&gt;Overview&lt;/a&gt;
+            &lt;a href="index.html#backend-topics"&gt;Backend&lt;/a&gt;
+            &lt;a href="index.html#frontend-topics"&gt;Frontend&lt;/a&gt;
+            &lt;a href="index.html#devops-topics"&gt;DevOps&lt;/a&gt;
+            &lt;a href="index.html#sites-topics"&gt;Sites&lt;/a&gt;
+          &lt;/nav&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+    `;
+  }
+}
+
+customElements.define('site-header', SiteHeader);</code></pre>
+              </div>
+            </section>
+
+            <section class="javascript-step">
+              <div class="javascript-step-heading">
+                <span class="javascript-step-number">02</span>
+                <div>
+                  <h3>Test it in a complete HTML page</h3>
+                  <p>Copy this into <code>header-test.html</code> in the same folder as <code>header.js</code>. The example loads the shared <code>styles.css</code> from the parent folder. Then open the page in your browser.</p>
+                </div>
+              </div>
+              <div class="code-snippet">
+                <button class="copy-button" type="button" data-copy-target="site-header-usage" aria-label="Copy custom element usage">Copy</button>
+                <div class="code-header">header-test.html</div>
+                <pre><code id="site-header-usage" data-language="html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Header component test&lt;/title&gt;
+  &lt;link rel="stylesheet" href="../styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;site-header&gt;&lt;/site-header&gt;
+
+  &lt;main class="container"&gt;
+    &lt;h1&gt;Header component test&lt;/h1&gt;
+    &lt;p&gt;If the shared navigation appears above, the component loaded successfully.&lt;/p&gt;
+  &lt;/main&gt;
+
+  &lt;script src="header.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              </div>
+            </section>
+
+            <aside class="javascript-note">
+              <strong>Works from a local file</strong>
+              <p>This loads a regular JavaScript file instead of fetching an HTML fragment, avoiding the local-file CORS restriction.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="topics-section" id="devops-topics" hidden>
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">DevOps</span>
+            <h2>DevOps topics</h2>
+            <p>Build dependable delivery pipelines, environments, and operations practices.</p>
+          </div>
+
+          <div class="topic-list">
+            <a href="git.html" class="topic-item"><span class="topic-number">01</span><span><strong>Git</strong><small>Manage source code with branching, collaboration, and version control workflows.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">02</span><span><strong>CI/CD pipelines</strong><small>Automate validation, packaging, and delivery from commit to release.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">03</span><span><strong>Containers</strong><small>Package applications consistently with Docker and container workflows.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">04</span><span><strong>Cloud deployment</strong><small>Structure environments, configuration, and repeatable infrastructure.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">05</span><span><strong>Monitoring and observability</strong><small>Track application health with logs, metrics, traces, and alerts.</small></span></a>
+            <a href="#" class="topic-item"><span class="topic-number">06</span><span><strong>Release management</strong><small>Plan safer releases with versioning, rollbacks, and change control.</small></span></a>
+          </div>
+        </div>
+      </section>
+
+<section class="topics-section" id="sites-topics" hidden>
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Sites</span>
+            <h2>Sites for reference</h2>
+            
+          </div>
+
+<article class="doc-card reference-links">
+              <div class="card-head">
+                <span class="chip chip-backend">Sites for reference</span>
+                <span class="meta">18 topics</span>
+              </div>
+              <h3>Architecture</h3>              
+              <p><a href="https://codeopinion.com/multi-tenant-best-practices-can-backfire/?via=dailydev" target="_blank" rel="noopener noreferrer">Multi-tenant best practices can backfire</a></p>
+              <p><a href="https://tinyurl.com/2s3zxeam" target="_blank" rel="noopener noreferrer">Grokking the System Design Interview</a></p>
+<p><a href="https://learn.microsoft.com/en-us/azure/architecture/" target="_blank" rel="noopener noreferrer">Microsoft Azure Architecture Center</a></p>
+
+            </article>
+
+
+          
+          
+
+
+
+          
+        </div>
+      </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script src="header.js"></script>
+    <script src="../docs.js"></script>
+    
+  </body>
+</html>
