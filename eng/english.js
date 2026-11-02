@@ -21,6 +21,7 @@ function syncEnglishView() {
     } else {
       link.removeAttribute('aria-current');
     }
+    document.dispatchEvent(new Event('docuhub:viewchange'));
   }
 
   if (target && (isTopics || isDailyEnglish)) {
