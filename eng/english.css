@@ -47,6 +47,9 @@
   padding-left: 20px;
   border-left: 1px solid var(--line-strong);
 }
+.italics{
+  font-style: italic;
+}
 
 .english-content {
   min-width: 0;
